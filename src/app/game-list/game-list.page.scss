@@ -1,0 +1,96 @@
+ion-content{
+  --ion-background-color:#444;
+}
+ion-title{
+  background: linear-gradient(to bottom,#eee,#ccc);
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 1em 0;
+  text-align: center;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+ion-grid{
+  background: linear-gradient(to bottom,#444,#222);
+  min-height:60%;
+  padding-bottom: 5%;
+}
+
+img{
+  margin: 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+ion-card {
+  background-color: #202020;
+  box-shadow: 4px 3px 8px 0 rgb(200 152 44 / 22%);
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.filtered{
+  color:#fff;
+  margin-left:1em;
+}
+
+.contentTitle{
+  width:100%;
+  padding-top:2%;
+  padding-bottom:2%;
+}
+
+.contentTitle{
+  text-align: center;
+  color:#f2f2f2;
+}
+
+ion-footer{
+  padding-top: 5%;
+  background-color: silver;
+  color: silver;
+}
+
+h2{
+  font-size: 1.2em;
+  text-align: center;
+  color:#f2f2f2;
+}
+
+
+ion-button{
+ margin-top: 10%;
+  margin-right:50%;
+  margin-left:50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  --background:linear-gradient(to bottom,#428cff,#62ceff);
+}
+
+ion-select::part(icon) {
+  color: #1a1a1a;
+  opacity: 1;
+}
+
+.sortGames{
+  text-align: right;
+  color:#333;
+}
+
+.select{
+  margin-top:1em;
+  width:100%;
+  --ion-background-color: silver;
+}
+.like{
+  padding:5px;
+  position:absolute;
+  top:0;
+  right:0;
+}

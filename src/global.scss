@@ -10,6 +10,7 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -24,3 +25,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-title{
+  background: linear-gradient(to bottom,#eee,#ccc);
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 1em 0;
+  text-align: center;
+}
+
+ion-toggle{
+  --background-checked: limegreen;
+}

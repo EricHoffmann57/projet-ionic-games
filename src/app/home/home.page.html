@@ -1,20 +1,44 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      My game collection
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding" [fullscreen]="true">
+  <img class="Okabe" src="/assets/img/okabe.jpg"/>
+  <ion-list>
+    <h2> Ionic 6 Capacitor Storage API</h2>
+    <hr />
+    <ion-item>
+      <ion-label position="floating">Enter Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title" placeholder="Enter game title " required></ion-input>
+    </ion-item>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-item>
+      <ion-label position="floating">Game system</ion-label>
+      <ion-input type="text" [(ngModel)]="gameSystem" placeholder="Enter game system" required></ion-input>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-item>
+      <ion-label position="floating">Artwork link</ion-label>
+      <ion-input type="text" [(ngModel)]="artwork" placeholder="Enter artwork link" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      Get LocalStorage string title : {{ storageName }}
+    </ion-item>
+    <ion-item>
+      Get LocalStorage JSON game :
+      {{ game?.title}}: {{ game?.gameSystem }}
+      <img class="test" [src] = "game?.artwork" alt="{{game?.title}}">
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button class="ion-text-left" size="small" (click)="setStorage()">Set storage data</ion-button>
+    <ion-button size="small" color="tertiary" (click)="getStorage()">Get storage data</ion-button>
+    <ion-button size="small" color="danger" (click)="clearStorage()">Clear storage</ion-button>
   </div>
+
 </ion-content>

@@ -1,3 +1,6 @@
+ion-content{
+  --ion-background-color:#444;
+}
 #container {
   text-align: center;
 
@@ -24,4 +27,58 @@
 
 #container a {
   text-decoration: none;
+}
+
+.padding {
+  min-height: 100%;
+  padding: 5%;
+  background: linear-gradient(to right,#444,#222);
+}
+
+.logo{
+  height:200px;
+  position: relative;
+  margin-top: 10%;
+}
+.logo img {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+.test{
+  width:100%;
+  object-fit: contain;
+}
+.Okabe{
+  width:40%;
+  margin-top: 20%;
+  margin-right:50%;
+  margin-left:50%;
+  transform: translate(-50%, -50%);
+}
+.flex-wrap{
+  width:100%;
+  font-size:.5em;
+}
+.ion-text-left{
+  color: #fff;
+  --background:linear-gradient(to bottom,#428cff,#62ceff);
+}
+
+.ion-padding{
+  margin-top: 2em;
+}
+h2{
+  text-align: center;
+  color:#f2f2f2;
+}
+hr{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+}
+ion-item{
+  color:#f2f2f2;
 }

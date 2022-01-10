@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My games</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <h2>Create a new game card</h2>
+    <ion-button routerLink="/tab/games/new">Création</ion-button>
+  <hr />
+  <ion-searchbar color="light" showCancelButton="focus" animated [(ngModel)]="filterTerm"></ion-searchbar>
+  <ion-label class="filtered" *ngIf="games | filter: filterTerm as filtered">
+  &nbsp;&nbsp;{{filtered.length}} Game(s)</ion-label>
+  <ion-item class="select">
+    <ion-label class="sortGames">Sort games</ion-label>
+    <ion-select  [(ngModel)]="selected"
+                 (ionChange)="getGameSelection()">
+      <ion-select-option *ngFor="let option of options; let i = index" [value]="option">{{option}}</ion-select-option>
+    </ion-select>
+    <hr />
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let game of games |filter: filterTerm">
+        <ion-card [routerLink]="['/tab/games/',game.id]">
+          <div id="{{game.id}}"  [ngStyle]="{'color':!isFavorite === game.favorite ? 'yellow' : 'crimson' }" class="like">&#10084;</div>
+          <img [src] = "game.artwork" [alt] = "game.title"/>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

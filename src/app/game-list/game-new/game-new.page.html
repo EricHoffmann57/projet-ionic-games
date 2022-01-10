@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/games"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New game</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Artwork</ion-label>
+    <ion-input type="text" [(ngModel)]="game.artwork"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Title</ion-label>
+    <ion-input type="text" [(ngModel)]="game.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Game type</ion-label>
+    <ion-input type="text" [(ngModel)]="game.type"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Game system</ion-label>
+    <ion-input type="text" [(ngModel)]="game.platform"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Release date</ion-label>
+    <ion-input type="text" [(ngModel)]="game.releaseDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Editor</ion-label>
+    <ion-input type="text" [(ngModel)]="game.editor"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Developer</ion-label>
+    <ion-input type="text" [(ngModel)]="game.developer"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Soundtrack</ion-label>
+    <ion-input type="text" [(ngModel)]="game.ost"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Rating</ion-label>
+    <ion-input type="text" [(ngModel)]="game.rating"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Lifespan</ion-label>
+    <ion-input type="text" [(ngModel)]="game.playtime"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Favorite ?</ion-label>
+    <ion-toggle [(ngModel)]="game.favorite"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Synopsis</ion-label>
+    <ion-textarea rows="20" [(ngModel)]="game.description"></ion-textarea>
+  </ion-item>
+  <p class="text-center">
+    <ion-button (click)="add()">Submit</ion-button>
+  </p>
+</ion-content>

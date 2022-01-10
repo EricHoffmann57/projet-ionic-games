@@ -1,0 +1,23 @@
+.logo{
+  width:2em;
+}
+ion-button{
+  color:#fff;
+}
+img{
+  box-shadow: 2px 2px 5px #202020;
+}
+.X{
+  --background: #ff0000;
+}
+ion-button{
+  margin-top: 10%;
+  margin-right:50%;
+  margin-left:50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  --background:linear-gradient(to bottom,#428cff,#62ceff);
+}
+ion-toggle{
+  --background-checked: limegreen;
+}
