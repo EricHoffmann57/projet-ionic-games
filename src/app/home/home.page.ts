@@ -40,5 +40,4 @@ export class HomePage {
   clearStorage() {
     this.storage.clear();
   }
-
 }

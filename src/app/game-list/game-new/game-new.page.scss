@@ -1,15 +1,24 @@
 ion-content{
   --ion-background-color:#444;
 }
+.ion-padding{
+  height:5em;
+  margin-bottom: 2em;
 
+}
+
+ion-item{
+  color:#f2f2f2;
+}
 ion-button{
   margin-top: 10%;
   margin-right:50%;
   margin-left:50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  --background:linear-gradient(to bottom,#428cff,#62ceff);
+  //--background:linear-gradient(to bottom,#428cff,#62ceff);
 }
-ion-item{
-  color:#f2f2f2;
+
+ion-textarea{
+  overflow: scroll;
 }

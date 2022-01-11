@@ -8,55 +8,90 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Artwork</ion-label>
-    <ion-input type="text" [(ngModel)]="game.artwork"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Title</ion-label>
-    <ion-input type="text" [(ngModel)]="game.title"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Game type</ion-label>
-    <ion-input type="text" [(ngModel)]="game.type"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Game system</ion-label>
-    <ion-input type="text" [(ngModel)]="game.platform"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Release date</ion-label>
-    <ion-input type="text" [(ngModel)]="game.releaseDate"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Editor</ion-label>
-    <ion-input type="text" [(ngModel)]="game.editor"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Developer</ion-label>
-    <ion-input type="text" [(ngModel)]="game.developer"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Soundtrack</ion-label>
-    <ion-input type="text" [(ngModel)]="game.ost"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Rating</ion-label>
-    <ion-input type="text" [(ngModel)]="game.rating"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Lifespan</ion-label>
-    <ion-input type="text" [(ngModel)]="game.playtime"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Favorite ?</ion-label>
-    <ion-toggle [(ngModel)]="game.favorite"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label>Synopsis</ion-label>
-    <ion-textarea rows="20" [(ngModel)]="game.description"></ion-textarea>
-  </ion-item>
-  <p class="text-center">
-    <ion-button (click)="add()">Submit</ion-button>
-  </p>
+  <form #registerForm="ngForm" class="form">
+    <ion-item>
+      <ion-label>Artwork</ion-label>
+      <ion-input type="text" id="artwork" name="artwork" [(ngModel)]="game.artwork" #artworkCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!artworkCTRL.valid && artworkCTRL.touched">
+        <ion-text color="danger">Artwork url is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" id="title" name="title" [(ngModel)]="game.title" #titleCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!titleCTRL.valid && titleCTRL.touched">
+        <ion-text color="danger">Game title is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Game type</ion-label>
+      <ion-input type="text"  id="type" name="type" [(ngModel)]="game.type" #typeCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!typeCTRL.valid && typeCTRL.touched">
+        <ion-text color="danger">Game type is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Game system</ion-label>
+      <ion-input type="text"  id="platform" name="platform" [(ngModel)]="game.platform" #platformCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!platformCTRL.valid && platformCTRL.touched">
+        <ion-text color="danger">Console system is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Release date</ion-label>
+      <ion-input type="text"  id="releaseDate" name="releaseDate" [(ngModel)]="game.releaseDate" #releaseDateCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!releaseDateCTRL.valid && releaseDateCTRL.touched">
+        <ion-text color="danger">Launch date is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Editor</ion-label>
+      <ion-input type="text" class="form-control" id="editor" name="editor" [(ngModel)]="game.editor" #editorCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!editorCTRL.valid && editorCTRL.touched">
+        <ion-text color="danger">Editor name is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Developer</ion-label>
+      <ion-input type="text" id="developer" name="developer" [(ngModel)]="game.developer" #devCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!devCTRL.valid && devCTRL.touched">
+        <ion-text color="danger">Dev studio is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Soundtrack</ion-label>
+      <ion-input type="text"  id="ost" name="ost" [(ngModel)]="game.ost" #ostCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!ostCTRL.valid && ostCTRL.touched">
+        <ion-text color="danger">Composer is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rating</ion-label>
+      <ion-input type="text"  id="rating" name="rating" [(ngModel)]="game.rating" #ratingCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!ratingCTRL.valid && ratingCTRL.touched">
+        <ion-text color="danger">Star rating is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lifespan</ion-label>
+      <ion-input type="text" id="lifespan" name="lifespan" [(ngModel)]="game.playtime" #playtimeCTRL="ngModel" required></ion-input>
+      <ion-item *ngIf="!playtimeCTRL.valid && playtimeCTRL.touched">
+        <ion-text color="danger">Game lifespan is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Favorite ?</ion-label>
+      <ion-toggle name="favorite" [(ngModel)]="game.favorite"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Synopsis</ion-label>
+      <ion-textarea rows="7" id="description" name="description" [(ngModel)]="game.description" #descriptionCTRL="ngModel" required></ion-textarea>
+      <ion-item *ngIf="!descriptionCTRL.valid && descriptionCTRL.touched">
+        <ion-text color="danger">Game synopsis is required</ion-text>
+      </ion-item>
+    </ion-item>
+    <ion-item class="last" style="text-align: center">
+        <ion-button  color="success" (click)="add();registerForm.reset()" [disabled] = "!registerForm.form.valid" >Submit</ion-button>
+    </ion-item>
+  </form>
 </ion-content>

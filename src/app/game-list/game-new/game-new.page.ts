@@ -3,6 +3,7 @@ import {ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {Game} from '../../models/games.model';
 import {GameService} from '../../services/Game/game.service';
+import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
   selector: 'app-game-new',
@@ -11,11 +12,13 @@ import {GameService} from '../../services/Game/game.service';
 })
 export class GameNewPage implements OnInit {
   public game!: Game;
+  ionicForm: any;
 
   constructor(
     private Game: GameService,
     private toastCtrl: ToastController,
-    private router: Router
+    private router: Router,
+    private routerOutlet: IonRouterOutlet,
   ) { }
 
   ngOnInit() {
@@ -41,5 +44,7 @@ export class GameNewPage implements OnInit {
       this.presentToast();
     });
   }
-
+  goBack() {
+    this.routerOutlet.pop();
+  }
 }
