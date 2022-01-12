@@ -48,7 +48,6 @@ input.ng-invalid.ng-touched{
   border: 1px solid red;
 }
 
-
-.ion-valid.ion-touched ion-label {
-  color: var(--ion-color-success);
+input.ng-valid {
+  border: 1px solid lightgreen;;
 }

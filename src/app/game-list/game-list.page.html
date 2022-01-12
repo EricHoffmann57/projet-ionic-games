@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content [fullscreen]="true">
     <h2>Create a new game card</h2>
-    <ion-button routerLink="/tab/games/new">Création</ion-button>
+    <ion-button routerLink="/tab/games/new">Create game card</ion-button>
   <hr />
   <ion-searchbar color="light" showCancelButton="focus" animated [(ngModel)]="filterTerm"></ion-searchbar>
   <ion-label class="filtered" *ngIf="games | filter: filterTerm as filtered">
