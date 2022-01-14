@@ -6,8 +6,8 @@ This project was generated with Angular CLI version 12.2 and Ionic 6
 This project presents a video games collection in the form of collectible cards linked to a firebase.
 It is the ionic version of Angular project, just to show some differences between the two versions.
 
-a form with required fields permits to add new cards
-an empty card cannot be added.
+a form permits to add new cards
+but an empty card cannot be added thanks to disabled submit button for empty fields. 
 
 Two ways to sort data for client have been implemented:
 
