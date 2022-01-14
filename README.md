@@ -1,6 +1,6 @@
 # projet-ionic-games
 
-This project was generated with Angular CLI version 12.2.13.
+This project was generated with Angular CLI version 12.2 and Ionic 6
 
 ## Video Games Collection
 This project presents a video games collection in the form of collectible cards linked to a firebase.
