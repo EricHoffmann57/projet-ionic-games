@@ -15,4 +15,4 @@ a search filter by keywords
 a select box with options to filter results: alphabetically, by dates, by rating,etc
 
 Photos can be taken on the fly thanks to @capacitor/camera, a console message confirms it.
-A service has been added for Ionic 6 capacitor storage on homepage just to show how it works!
+A service has been added for Ionic 6 capacitor storage API  on homepage just to show how it works!
