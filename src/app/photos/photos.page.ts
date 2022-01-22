@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
-//import {Filesystem, Directory} from '@capacitor/filesystem';
-//import {Storage} from '@capacitor/storage';
+import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera';
 
 @Component({
   selector: 'app-photos',
@@ -9,6 +7,7 @@ import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
   styleUrls: ['./photos.page.scss'],
 })
 export class PhotosPage implements OnInit {
+
   public photos: picture[] = [];
   constructor() { }
 
@@ -29,6 +28,7 @@ export class PhotosPage implements OnInit {
     this.addNewPhoto();
     console.log('a beautiful screenshot!');
   }
+
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
