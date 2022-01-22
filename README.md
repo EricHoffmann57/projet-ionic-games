@@ -16,3 +16,5 @@ a select box with options to filter results: alphabetically, by dates, by rating
 
 Photos can be taken on the fly thanks to @capacitor/camera, a console message confirms it.
 A service has been added for Ionic 6 capacitor storage API  on homepage just to show how it works!
+Possibility to upload pictures and save them in localstorage.
+
