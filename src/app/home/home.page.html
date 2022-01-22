@@ -23,8 +23,7 @@
       </ion-button>
     </ion-item>
     <ion-card *ngFor="let file of images; let i = index">
-    <ion-item style="color:lightblue">
-      LocalStorage JSON : &nbsp;
+    <ion-item style="color:lightblue;font-size: 1em">
       {{ file.name}}
       <img class="local" [src] = "file.data">
     </ion-item>

@@ -5,6 +5,7 @@ import {LoadingController, Platform, ToastController} from '@ionic/angular';
 import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera';
 
 
+
 const IMAGE_DIR = 'stored-images';
 
 interface LocalFile {
@@ -22,38 +23,13 @@ interface LocalFile {
 export class HomePage {
 
   images: LocalFile[] = [];
-  title: string;
-  artwork: string;
-  game = { title: '', artwork: ''};
-  storageName: string;
 
   constructor(
     private storage: StorageService,
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController
-  ) {}
-
-  setStorage() {
-    this.storage.setString('title', this.title);
-    this.storage.setObject('game', {
-      title: this.title,
-      artwork: this.artwork
-    });
-  }
-
-  getStorage() {
-    this.storage.getString('title').then((data: any) => {
-      if (data.value) {
-        this.storageName = data.value;
-      }
-    });
-    this.storage.getObject('game').then((data: any) => {
-      this.game = data;
-    });
-  }
-  clearStorage() {
-    this.storage.clear();
+  ) {
   }
 
   async ngOnInit() {
@@ -119,13 +95,14 @@ export class HomePage {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Uri,
-      source: CameraSource.Photos // Camera, Photos or Prompt!
+      source: CameraSource.Photos
     });
 
     if (image) {
       this.saveImage(image);
     }
   }
+
   async saveImage(photo: Photo) {
     const base64Data = await this.readAsBase64(photo);
 
@@ -140,7 +117,7 @@ export class HomePage {
     // Improve by only loading for the new image and unshifting array!
     this.loadFiles();
   }
-  // https://ionicframework.com/docs/angular/your-first-app/3-saving-photos
+
   private async readAsBase64(photo: Photo) {
     if (this.plt.is('hybrid')) {
       const file = await Filesystem.readFile({
@@ -148,8 +125,7 @@ export class HomePage {
       });
 
       return file.data;
-    }
-    else {
+    } else {
       // Fetch the photo, read as a blob, then convert to base64 format
       const response = await fetch(photo.webPath);
       const blob = await response.blob();
@@ -160,7 +136,7 @@ export class HomePage {
 
   // Helper function
   convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
-    const reader = new FileReader;
+    const reader = new FileReader();
     reader.onerror = reject;
     reader.onload = () => {
       resolve(reader.result);
@@ -168,30 +144,14 @@ export class HomePage {
     reader.readAsDataURL(blob);
   });
 
-  // Convert the base64 to blob data
-// and create  formData with it
-  async startUpload(file: LocalFile) {
-    const response = await fetch(file.data);
-    const blob = await response.blob();
-    const formData = new FormData();
-    formData.append('file', blob, file.name);
-    this.uploadData(formData);
-  }
-
-  // Upload the formData to our API
-  async uploadData(formData: FormData) {
-    const loading = await this.loadingCtrl.create({
-      message: 'Uploading image...',
-    });
-    await loading.present();
-
-  }
   async deleteImage(file: LocalFile) {
-    await Filesystem.deleteFile({
-      directory: Directory.Data,
-      path: file.path
-    });
-    this.loadFiles();
-    this.presentToast('File removed.');
+    if (confirm('Are you sure to delete this file ?')) {
+      await Filesystem.deleteFile({
+        directory: Directory.Data,
+        path: file.path
+      });
+      this.loadFiles();
+      this.presentToast('File removed.');
+    }
   }
 }
