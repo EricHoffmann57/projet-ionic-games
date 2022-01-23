@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import {StorageService} from '../services/storage/storage.service';
 import {Directory, Filesystem} from '@capacitor/filesystem';
 import {LoadingController, Platform, ToastController} from '@ionic/angular';
 import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera';
-
-
 
 const IMAGE_DIR = 'stored-images';
 
@@ -13,7 +10,6 @@ interface LocalFile {
   path: string;
   data: string;
 }
-
 
 @Component({
   selector: 'app-home',
@@ -25,7 +21,6 @@ export class HomePage {
   images: LocalFile[] = [];
 
   constructor(
-    private storage: StorageService,
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController
@@ -89,10 +84,23 @@ export class HomePage {
     });
     toast.present();
   }
-
-  async selectImage() {
+ //Camera source
+  async takePhoto() {
     const image = await Camera.getPhoto({
       quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera // Camera, Photos or Prompt
+    });
+
+    if (image) {
+      this.saveImage(image);
+    }
+  }
+ //Photos source
+  async selectImage() {
+    const image = await Camera.getPhoto({
+      quality: 100,
       allowEditing: false,
       resultType: CameraResultType.Uri,
       source: CameraSource.Photos
