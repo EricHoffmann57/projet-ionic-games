@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/games"></ion-back-button>
+      <ion-back-button defaultHref="/tab/games"></ion-back-button>
     </ion-buttons>
     <ion-title>New game</ion-title>
   </ion-toolbar>
@@ -91,7 +91,7 @@
       </ion-item>
     </ion-item>
     <ion-item class="last" style="text-align: center">
-        <ion-button  color="success" (click)="add();registerForm.reset()" [disabled] = "!registerForm.form.valid" >Submit</ion-button>
+        <ion-button  size="large" expand="full" color="success" (click)="add();registerForm.reset()" [disabled] = "!registerForm.form.valid" >Submit</ion-button>
     </ion-item>
   </form>
 </ion-content>
