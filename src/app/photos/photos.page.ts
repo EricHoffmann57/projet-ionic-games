@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
+import {StorageService} from '../services/storage/storage.service';
+import {HomePage} from '../home/home.page';
+import {ActivatedRoute} from '@angular/router';
+
 
 
 @Component({
@@ -8,30 +11,52 @@ import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
   styleUrls: ['./photos.page.scss'],
 })
 export class PhotosPage implements OnInit {
-
   public photos: picture[] = [];
-  constructor() { }
+
+  game = { title: '', image: ''};
+  title: string;
+  storageName: string;
+  image: string;
+  images: any;
+
+  constructor(
+    private storage: StorageService,
+    public photoService: HomePage,
+    private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
   }
-  async addNewPhoto(){
-    const capture = await Camera.getPhoto({
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Camera,
-      quality: 100
-    });
-    this.photos.unshift({
-      filepath: ' ',
-      webviewPath: capture.webPath
+
+  getImages(){
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.images = JSON.parse(params.images);
     });
   }
-  takePhoto(){
-    this.addNewPhoto();
-    console.log('a beautiful screenshot!');
+
+  setStorage() {
+    this.storage.setString('title', this.title);
+    this.storage.setObject('game', {
+      title: this.title,
+      webviewPath: this.image
+    });
+  }
+
+  getStorage() {
+    this.storage.getString('title').then((data: any) => {
+      if (data.value) {
+        this.storageName = data.value;
+      }
+    });
+    this.storage.getObject('game').then((data: any) => {
+      this.game = data;
+    });
+  }
+
+  clearStorage() {
+    this.storage.clear();
   }
 
 }
-
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface picture {
   filepath: string;

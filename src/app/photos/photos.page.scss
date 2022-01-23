@@ -1,3 +1,19 @@
 ion-content{
-  --ion-background-color:#444;
+  --ion-background-color:silver;
+}
+ .setSto{
+   --background:linear-gradient(to bottom,#428cff,#62ceff);
+ }
+
+ .localSto{
+   margin: 2em
+ }
+.ion-text-center{
+  margin-bottom: 1em;
+}
+
+.send{
+  --background:linear-gradient(to bottom,#428cff,#62ceff);
+  text-align: center;
+  color: #fff;
 }

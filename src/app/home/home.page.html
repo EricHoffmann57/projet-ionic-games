@@ -6,9 +6,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding" [fullscreen]="true">
-  <ion-fab-button color="warning">
-    <ion-icon name="camera" (click)="takePhoto()"></ion-icon>
-  </ion-fab-button>
   <img class="Okabe" src="/assets/img/okabe.jpg"/>
   <ion-list>
     <h2> Ionic 6 Image Capacitor</h2>
@@ -26,18 +23,12 @@
         </ion-button>
       </ion-item>
     </ion-list>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let photo of photos;index as position">
-        <ion-img [src]="photo.webviewPath"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="light">
-    <ion-button fill="clear" expand="full" color="dark" (click)="selectImage()">
+<ion-footer class="ion-text-center">
+  <ion-toolbar color="dark">
+    <ion-button expand="full" class="send" (click) = "sendImages()">Send to Gallery</ion-button>
+    <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
       <ion-icon slot="start" name="camera"></ion-icon>
       Select Image
     </ion-button>

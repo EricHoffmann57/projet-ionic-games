@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import {Directory, Filesystem} from '@capacitor/filesystem';
-import {LoadingController, Platform, ToastController} from '@ionic/angular';
+import {LoadingController, NavController, Platform, ToastController} from '@ionic/angular';
 import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera';
+import {NavigationExtras} from '@angular/router';
 
 const IMAGE_DIR = 'stored-images';
 
@@ -10,7 +11,9 @@ interface LocalFile {
   path: string;
   data: string;
 }
-
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -23,9 +26,9 @@ export class HomePage {
   constructor(
     private plt: Platform,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
-  ) {
-  }
+    private toastCtrl: ToastController,
+    public nav: NavController
+  ) {}
 
   async ngOnInit() {
     this.loadFiles();
@@ -82,32 +85,24 @@ export class HomePage {
       message: text,
       duration: 3000,
     });
-    toast.present();
+    await toast.present();
   }
- //Camera source
-  async takePhoto() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Camera // Camera, Photos or Prompt
-    });
 
-    if (image) {
-      this.saveImage(image);
-    }
-  }
  //Photos source
   async selectImage() {
-    const image = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: false,
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Photos
-    });
+    try {
+      const image = await Camera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Prompt
+      });
 
-    if (image) {
-      this.saveImage(image);
+      if (image) {
+        this.saveImage(image);
+      }
+    } catch (e) {
+      this.presentToast('Action cancelled!');
     }
   }
 
@@ -161,5 +156,14 @@ export class HomePage {
       this.loadFiles();
       this.presentToast('File removed.');
     }
+  }
+  sendImages(){
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        images: JSON.stringify(this.images),
+      }
+    };
+    this.nav.navigateForward(['tab/photos'], navigationExtras);
+    console.log(navigationExtras);
   }
 }
