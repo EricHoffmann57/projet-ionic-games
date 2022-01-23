@@ -14,7 +14,18 @@ Two ways to sort data for client have been implemented:
 a search filter by keywords
 a select box with options to filter results: alphabetically, by dates, by rating,etc
 
-Photos can be taken on the fly thanks to @capacitor/camera, a console message confirms it.
-A service has been added for Ionic 6 capacitor storage API  on homepage just to show how it works!
-Possibility to upload pictures and save them in localstorage.
+##Ionic 6 Image Capacitor on HomePage
+
+Images can be saved to application on th fly with Ionic camera capacitor or uploaded from hard drive.
+Images are persistent even after closing application!
+
+A button permits to send all images to a Gallery on PhotosPage with routing and JsonStringify/parse
+
+##Ionic 6 Storage Capacitor
+
+A button permits to show in big size the thumbnails of front page
+A sample of storage shows persistent data for a string an an URL as picture in localStorage
+This localStorage can be set/get and erased too.
+
+
 
