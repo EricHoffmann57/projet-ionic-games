@@ -28,9 +28,12 @@ export class PhotosPage implements OnInit {
   }
 
   getImages(){
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.images = JSON.parse(params.images);
-    });
+      this.activatedRoute.queryParams.subscribe(params => {
+        try{
+        this.images = JSON.parse(params.images);
+        }catch (e) {
+          console.log('You need to send images to gallery page first!');
+      }});
   }
 
   setStorage() {
